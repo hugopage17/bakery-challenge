@@ -15,9 +15,9 @@ export class Product implements IProduct {
         return Object.entries(totalPacks).reduce((sum, [size, count]) => sum + count * this.packs.find(p => p.size === Number(size))!.price, 0);
     }
 
-    public calculatePacksRequired(amount: number,memo: Map<number, Record<number, number> | null> = new Map()): Record<number, number> | null {
+    public calculatePacksRequired(amount: number, memo: { [key: number]: Record<number, number> | null } = {}): Record<number, number> | null {
         if (amount === 0) return {};
-        if (memo.has(amount)) return memo.get(amount)!;
+        if (memo[amount] !== undefined) return memo[amount]!;
     
         let bestPackCombination: Record<number, number> | null = null;
     
@@ -33,7 +33,7 @@ export class Product implements IProduct {
                 }
             }
         }
-        memo.set(amount, bestPackCombination);
+        memo[amount] = bestPackCombination;
         return bestPackCombination;
     };
 }

@@ -11,5 +11,5 @@ export interface IProductBaseParams {
 
 export interface IProduct extends IProductBaseParams {
   calculateTotalPrice(packsRequired: Record<number, number>): number
-  calculatePacksRequired(amount: number, memo?: Map<number, Record<number, number> | null>): Record<number, number> | null;
+  calculatePacksRequired(amount: number, memo?: { [key: number]: Record<number, number> | null }): Record<number, number> | null;
 }
