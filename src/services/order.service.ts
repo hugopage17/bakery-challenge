@@ -3,7 +3,7 @@ import { IOrderService } from "../types/order";
 import { Product } from "./product.service";
 
 export class OrderService implements IOrderService {
-    private readonly _productBaseParams: IProductBaseParams[] = [
+    private readonly productBaseParams: IProductBaseParams[] = [
         {
             code: "VS5",
             name: "Vegemite Scroll",
@@ -28,7 +28,7 @@ export class OrderService implements IOrderService {
     ];
 
     public getProduct(code: string): IProduct | undefined {
-        const product = this._productBaseParams.find((product) => product.code === code);
+        const product = this.productBaseParams.find((product) => product.code === code);
         return product ? new Product(product) : undefined;
     }
 
