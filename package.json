@@ -2,8 +2,9 @@
   "name": "bakery-challenge",
   "version": "1.0.0",
   "main": "./dist/index.js",
-  "types": "dist/types/index.d.ts",
+  "types": "./dist/types/index.d.ts",
   "scripts": {
+    "build": "tsc",
     "test": "jest"
   },
   "keywords": [],
