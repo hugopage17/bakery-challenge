@@ -2,15 +2,16 @@
 This repository is for the Pivot Professional Learning coding challenge.
 
 ## Getting Started
-Get started by first installing required dependencies using the command below
+Get started by first installing required dependencies using the command below.
 ```bash
 npm install
 ```
-To run unit test run the below command or refer to the github actions in this repository to examine unit testing within a CI environment
+To run unit test run the below command or refer to the github actions in this repository to examine unit testing within a CI environment.
+All unit tests can be found in tests folder.
 ```bash
 npm test
 ```
-To build the application run the command below
+To build the application run the command below.
 ```bash
 npm run build
 ```
@@ -39,7 +40,7 @@ const orderService = new OrderService(new InventoryService());
 Process order from orderLine argument as string line and returns the order output as string (e.g
     10 VS5 $17.98
     2 x 5 $8.99
-)
+).
 ```typescript
 orderService.processOrder(orderLine: string) => string;
 ```
@@ -48,7 +49,7 @@ orderService.processOrder(orderLine: string) => string;
 Reads order from file where file name is passed as an argument and returns the order output as string (e.g
     10 VS5 $17.98
     2 x 5 $8.99
-)
+).
 ```typescript
 orderService.processOrderFromFile(orderFile: string) => Promise<string>;
 ```
@@ -67,7 +68,7 @@ import productsConfig from "./src/products.json";
 const product = new Product(productsConfig[0]);
 ```
 #### CalculateTotalPrice
-Calculate the total price of the order
+Calculate the total price of the order.
 ```typescript
 product.calculateTotalPrice(totalPacks: Record<number, number>) => number;
 ```

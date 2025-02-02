@@ -5,7 +5,7 @@ export class Product implements IProduct {
     public name: string;
     public packs: IPack[];
 
-    constructor (productParams: IProductBaseParams) {
+    constructor(productParams: IProductBaseParams) {
         this.code = productParams.code;
         this.name = productParams.name;
         this.packs = productParams.packs

@@ -10,22 +10,22 @@ export class OrderService implements IOrderService {
     }
 
     public processOrder(orderLine: string) {
-        const [amountStr, code] = orderLine.split(' ');
+        const [amountStr, productCode] = orderLine.split(' ');
         const amount = parseInt(amountStr, 10);
         
-        const product = this.inventory.getProduct(code);
+        const product = this.inventory.getProduct(productCode);
         if (!product) {
-            throw new Error(`Product not found from code ${code}`);
+            throw new Error(`Product not found from code ${productCode}`);
         }
 
         const packsRequired = product.calculatePacksRequired(amount);
         if (!packsRequired) {
-            throw new Error(`Cannot fulfill order exactly for ${amount} ${product.name}`);
+            throw new Error(`Cannot fulfill order for ${amount}x ${product.name}`);
         }
 
         const totalPrice = product.calculateTotalPrice(packsRequired);
 
-        return `${amount} ${code} $${totalPrice.toFixed(2)}\n`.concat(Object.entries(packsRequired).map(([size, count]) => {
+        return `${amount} ${product.code} $${totalPrice.toFixed(2)}\n`.concat(Object.entries(packsRequired).sort((a,b) => parseInt(b[0]) - parseInt(a[0])).map(([size, count]) => {
             const price = product.packs.find(p => p.size === Number(size))!.price;
             return `${count} x ${size} $${price}`
         }).join('\n'))

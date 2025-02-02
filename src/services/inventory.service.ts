@@ -1,6 +1,6 @@
 import { IProductBaseParams, IProduct } from "../types/product";
 import { Product } from "./product.service";
-import productsConfig from "../products.json";
+import productsConfig from "../../config/products.json";
 
 export class InventoryService {
     private readonly productBaseParams: IProductBaseParams[] = productsConfig;
