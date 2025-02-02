@@ -28,7 +28,6 @@ npm run build
 - [InventoryService](#InventoryService)
     - [Get Product](#GetProduct)
     - [Interfaces](#Interfaces)
-
 ### OrderService
 ```typescript
 import { OrderService } from "./src/services/order.service";
@@ -39,17 +38,14 @@ const orderService = new OrderService(new InventoryService());
 #### ProcessOrder
 Process order from orderLine argument as string line and returns the order output as string (e.g
     10 VS5 $17.98
-    2 x 5 $8.99
-).
+    2 x 5 $8.99).
 ```typescript
 orderService.processOrder(orderLine: string) => string;
 ```
-
 #### ProcessOrderFromFile
 Reads order from file where file name is passed as an argument and returns the order output as string (e.g
     10 VS5 $17.98
-    2 x 5 $8.99
-).
+    2 x 5 $8.99).
 ```typescript
 orderService.processOrderFromFile(orderFile: string) => Promise<string>;
 ```
@@ -73,11 +69,10 @@ Calculate the total price of the order.
 product.calculateTotalPrice(totalPacks: Record<number, number>) => number;
 ```
 #### CalculatePacksRequired
-Calculate the amount of different pack sizes each required to fullfil order.
+Calculate the amount of different pack sizes each required to fulfill order.
 ```typescript
 product.calculatePacksRequired(amount: number, memo: { [key: number]: Record<number, number> | null } = {}) => number;
 ```
-
 #### Interfaces
 ```typescript
 interface IPack {

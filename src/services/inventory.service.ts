@@ -3,10 +3,10 @@ import { Product } from "./product.service";
 import productsConfig from "../../config/products.json";
 
 export class InventoryService {
-    private readonly productBaseParams: IProductBaseParams[] = productsConfig;
+    private readonly items: IProductBaseParams[] = productsConfig;
 
     public getProduct(code: string): IProduct | undefined {
-        const product = this.productBaseParams.find((product) => product.code === code);
+        const product = this.items.find((product) => product.code === code);
         return product ? new Product(product) : undefined;
     }
 }
